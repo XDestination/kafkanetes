@@ -38,13 +38,10 @@ objects:
         - name: kafkanetes
           image: ${IMAGESTREAM}
           command:
-          - bin/kafka-server-start.sh
+          - bin/kafka-start.sh
           args:
-          - config/server.properties
-          - --override
-          - zookeeper.connect=${ZOOKEEPER_SERVICE}
-          - --override
-          - advertised.host.name=${OBJECT_NAME_PREFIX}
+          - ${OBJECT_NAME_PREFIX}
+          - ${ZOOKEEPER_SERVICE}
           ports:
           - containerPort: 9092
     triggers:
